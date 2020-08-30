@@ -1,0 +1,2 @@
+from gym_apn_connect4.envs.apn_connect4_env import ApnConnect4Env
+from gym_foo.envs.apn_connect4_extrahard_env import ApnConnect4EnvExtraHardEnv
