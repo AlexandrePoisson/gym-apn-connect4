@@ -1,0 +1,15 @@
+.vscode/settings.json
+gym_apn_connect4/envs/__pycache__/__init__.cpython-37.pyc
+gym_apn_connect4/envs/__pycache__/apn_connect4_env.cpython-37.pyc
+gym_apn_connect4.egg-info/dependency_links.txt
+gym_apn_connect4.egg-info/PKG-INFO
+gym_apn_connect4.egg-info/requires.txt
+gym_apn_connect4.egg-info/SOURCES.txt
+gym_apn_connect4.egg-info/top_level.txt
+gym_foo.egg-info/dependency_links.txt
+gym_foo.egg-info/PKG-INFO
+gym_foo.egg-info/requires.txt
+gym_foo.egg-info/SOURCES.txt
+gym_foo.egg-info/top_level.txt
+gym_apn_connect4/.DS_Store
+gym_apn_connect4/__pycache__/__init__.cpython-37.pyc
