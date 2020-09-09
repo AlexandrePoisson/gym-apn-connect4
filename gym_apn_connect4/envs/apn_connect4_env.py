@@ -79,6 +79,7 @@ class ApnConnect4Env(gym.Env):
 
 
   def render(self, mode='human'):
+    print("")
     print(self.board)
 
 
