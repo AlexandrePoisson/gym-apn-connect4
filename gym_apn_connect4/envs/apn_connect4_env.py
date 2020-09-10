@@ -48,7 +48,7 @@ class ApnConnect4Env(gym.Env):
     self.board[j][col_number] = value
 
     done, reward = eval_reward(self.board)
-    observation = None
+    observation = self.board
 
     if self.player_turn == 1:
       self.player_turn = 2
@@ -76,6 +76,7 @@ class ApnConnect4Env(gym.Env):
   def reset(self):
     self.board = np.full((self.n_raw, self.n_col), 0)
     self.player_turn = 1
+    return self.board
 
 
   def render(self, mode='human'):
