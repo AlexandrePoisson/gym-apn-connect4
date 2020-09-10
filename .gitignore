@@ -15,3 +15,4 @@ gym_apn_connect4/.DS_Store
 gym_apn_connect4/__pycache__/__init__.cpython-37.pyc
 .DS_Store
 gym_apn_connect4/agents/__pycache__/random_agent.cpython-37.pyc
+gym_apn_connect4/agents/__pycache__/keyboard_agent.cpython-37.pyc
