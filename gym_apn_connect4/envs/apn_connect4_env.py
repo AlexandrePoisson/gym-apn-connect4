@@ -10,7 +10,7 @@ class ApnConnect4Env(gym.Env):
     self.n_col = 7
     self.n_raw = 6
     self.board = np.full((self.n_raw, self.n_col), 0)
-    self.action_spaces = spaces.Discrete(14)
+    self.action_space = spaces.Discrete(14)
     self.player_turn = 1
     # 0 : player one column 0
     # 1 : player one column 1
