@@ -7,3 +7,8 @@ A Gym environment for the Connect 4 game.
 In game like connect 4, there are 2 agents. How to manage multi agent in gym ?
 Readings:
 ma-gy : [https://github.com/koulanurag/ma-gym]
+
+## Lectures
+
+Most of Code is coming from :  https://tmoer.github.io/AlphaZero/
+https://github.com/tmoer
