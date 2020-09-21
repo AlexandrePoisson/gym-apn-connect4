@@ -9,8 +9,11 @@ class ApnConnect4Env(gym.Env):
   def __init__(self):
     self.n_col = 7
     self.n_raw = 6
-    self.board = np.full((self.n_raw, self.n_col), 0)
+    self.board = np.full((self.n_raw, self.n_col), 0, dtype=np.int8)
     self.action_space = spaces.Discrete(14)
+    low = np.full((self.n_raw, self.n_col), 0, dtype=np.int8).reshape(self.n_raw * self.n_col)
+    high = np.full((self.n_raw, self.n_col), 2, dtype=np.int8).reshape(self.n_raw * self.n_col)
+    self.observation_space = spaces.Box(low, high, dtype=np.int8)
     self.player_turn = 1
     # 0 : player one column 0
     # 1 : player one column 1
@@ -18,6 +21,12 @@ class ApnConnect4Env(gym.Env):
     # 13 : player two column 7 
 
   def step(self, action):
+
+    def add_to_col(col, board, val):
+      res = np.where(board[:, col] == 0)
+      i_row = np.amin(res, axis=1)[0]
+      board[i_row][col] = val
+      return board
 
     def connect4found(board, k):
         # TODO : update to search in diags
@@ -27,10 +36,10 @@ class ApnConnect4Env(gym.Env):
         return connect4found
 
     def eval_reward(board):
-        if connect4found(board,1):
+        if connect4found(board, 1):
           reward = 1
           done = True
-        elif connect4found(board,2):
+        elif connect4found(board, 2):
           reward = -1
           done = True
         else:
@@ -42,21 +51,22 @@ class ApnConnect4Env(gym.Env):
     value = action // self.n_col + 1
 
     j = 0
-
     while self.board[j][col_number] != 0:
       j = j + 1
-    self.board[j][col_number] = value
-
-    done, reward = eval_reward(self.board)
-    observation = self.board
+    if j < self.n_raw:
+      self.board[j][col_number] = value
+      done, reward = eval_reward(self.board)
+    else:
+      done, reward = (True, -1)
+    observation = self.board.reshape(self.n_raw * self.n_col)
 
     if self.player_turn == 1:
-      self.player_turn = 2
+        self.player_turn = 2
     
     else:
-      self.player_turn = 1
+        self.player_turn = 1
 
-    return observation, reward, done, None
+    return observation, reward, done, {}
 
 
   def is_legal_move(self, move):
@@ -76,7 +86,7 @@ class ApnConnect4Env(gym.Env):
   def reset(self):
     self.board = np.full((self.n_raw, self.n_col), 0)
     self.player_turn = 1
-    return self.board
+    return self.board.reshape(self.n_raw * self.n_col)
 
 
   def render(self, mode='human'):
