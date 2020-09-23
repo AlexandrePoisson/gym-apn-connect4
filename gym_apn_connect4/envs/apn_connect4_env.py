@@ -54,6 +54,7 @@ class ApnConnect4Env(gym.Env):
                 #print("draw")
                 reward = 0.5
                 done = True
+
             else:
                 reward = 0
                 done = False
